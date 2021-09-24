@@ -1,22 +1,39 @@
+.container {
+  padding: 20px;
+}
+
 ul {
   list-style-type: none;
+
+  li {
+    margin-bottom: 20px;
+  }
 }
-.imageStyle {
-  width: 50px;
-  height: 50px;
-}
-button {
-  width: 70px;
-  height: 20px;
-  font-size: 9px;
+.userLists {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
-  border: 1px solid #8c82fc;
-  background: #fff;
-  color: #8c82fc;
-  border-radius: 20px;
-  cursor: pointer;
-}
-button:hover {
-  background: #8c82fc;
-  color: #fff;
+  .imageStyle {
+    margin: 0px 20px;
+    width: 40px;
+    height: 40px;
+  }
+
+  button {
+    margin-left: 10px;
+    width: 60px;
+    height: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    border: 1px solid #8c82fc;
+    background: #fff;
+    color: #8c82fc;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #8c82fc;
+    color: #fff;
+  }
 }
