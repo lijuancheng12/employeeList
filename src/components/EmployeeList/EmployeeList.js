@@ -13,6 +13,7 @@ const images = [image1, image2, image3, image4, image5, image6];
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
   const [employeeId, setEmployeeId] = useState(-1);
   const [placeHolderImages, setPlaceHolderImages] = useState([]);
 
@@ -23,18 +24,26 @@ const EmployeeList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(
-        "http://dummy.restapiexample.com/api/v1/employees"
-      );
-
-      setEmployees(result.data.data);
-      setPlaceHolderImages(result.data.data.map(getRandomImage));
-      console.log(placeHolderImages);
+      setShowErrorMessage(false);
+      try {
+        const result = await axios(
+          "http://dummy.restapiexample.com/api/v1/employees"
+        );
+        setEmployees(result.data.data);
+        setPlaceHolderImages(result.data.data.map(getRandomImage));
+      } catch (err) {
+        setShowErrorMessage(true);
+      }
     };
     fetchData();
   }, []);
 
-  return (
+  return showErrorMessage ? (
+    <div className={styles.errorMessage}>
+      Oops! something went wrong when fetching the data. This happens sometimes,
+      please try to refresh the page
+    </div>
+  ) : (
     <div className={styles.container}>
       <ul>
         {employees.map((employee, index) => (
@@ -54,7 +63,15 @@ const EmployeeList = () => {
           </li>
         ))}
       </ul>
-      {employeeId > -1 && <EmployeeInfo employeeId={employeeId} />}
+      {employeeId > -1 && (
+        <EmployeeInfo
+          employeeId={employeeId}
+          closeMe={() => setEmployeeId(-1)}
+          placeHolderImage={
+            placeHolderImages[employees.findIndex((e) => e.id === employeeId)]
+          }
+        />
+      )}
     </div>
   );
 };
