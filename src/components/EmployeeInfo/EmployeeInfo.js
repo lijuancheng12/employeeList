@@ -5,6 +5,7 @@ import styles from "./EmployeeInfo.module.scss";
 const EmployeeInfo = ({ employeeId, closeMe, placeHolderImage }) => {
   const [employee, setEmployee] = useState({});
   const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const closeButton = () => {
     closeMe();
   };
@@ -17,12 +18,14 @@ const EmployeeInfo = ({ employeeId, closeMe, placeHolderImage }) => {
           `http://dummy.restapiexample.com/api/v1/employee/${employeeId}`
         );
         setEmployee(result.data.data);
+        setIsLoading(false);
       } catch (err) {
         setShowErrorMessage(true);
+        setIsLoading(false);
       }
     };
     fetchData();
-  });
+  }, [employeeId]);
 
   return (
     <div className={styles.wrapper}>
@@ -39,7 +42,9 @@ const EmployeeInfo = ({ employeeId, closeMe, placeHolderImage }) => {
             </span>
           </div>
         </div>
-        {showErrorMessage ? (
+        {isLoading ? (
+          <div className={styles.loading}>Loading ...</div>
+        ) : showErrorMessage ? (
           <div className={styles.errorMessage}>
             Oops! something went wrong when fetching the data. This happens
             sometimes, please try to close the popup and open it again!
