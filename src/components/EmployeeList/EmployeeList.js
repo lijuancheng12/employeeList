@@ -45,6 +45,7 @@ const EmployeeList = () => {
     </div>
   ) : (
     <div className={styles.container}>
+      <h1>Employees</h1>
       <ul>
         {employees.map((employee, index) => (
           <li key={employee.id}>

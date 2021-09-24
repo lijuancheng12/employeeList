@@ -13,6 +13,7 @@ const EmployeeInfo = ({ employeeId, closeMe, placeHolderImage }) => {
   useEffect(() => {
     const fetchData = async () => {
       setShowErrorMessage(false);
+      setIsLoading(true);
       try {
         const result = await axios(
           `http://dummy.restapiexample.com/api/v1/employee/${employeeId}`

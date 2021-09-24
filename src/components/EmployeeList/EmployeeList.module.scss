@@ -7,40 +7,43 @@
 .container {
   margin-top: 20px;
   padding: 20px;
-}
-
-ul {
-  list-style: none;
-
-  li {
-    margin-bottom: 20px;
-  }
-}
-.userLists {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  .imageStyle {
-    margin: 0px 20px;
-    width: 40px;
-    height: 40px;
+  h1 {
+    margin-bottom: 40px;
   }
 
-  button {
-    margin-left: 10px;
-    width: 60px;
-    height: 20px;
-    font-size: 10px;
+  ul {
+    list-style: none;
+
+    li {
+      margin-bottom: 20px;
+    }
+  }
+  .userLists {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     font-weight: bold;
-    border: 1px solid #8c82fc;
-    background: #fff;
-    color: #8c82fc;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  button:hover {
-    background: #8c82fc;
-    color: #fff;
+    .imageStyle {
+      margin: 0px 20px;
+      width: 40px;
+      height: 40px;
+    }
+
+    button {
+      margin-left: 10px;
+      width: 60px;
+      height: 20px;
+      font-size: 10px;
+      font-weight: bold;
+      border: 1px solid #8c82fc;
+      background: #fff;
+      color: #8c82fc;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #8c82fc;
+      color: #fff;
+    }
   }
 }
