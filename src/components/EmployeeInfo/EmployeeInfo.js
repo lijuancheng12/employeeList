@@ -10,6 +10,13 @@ const EmployeeInfo = ({ employeeId, closeMe, placeHolderImage }) => {
     closeMe();
   };
 
+  const errorMessage = (
+    <div className={styles.errorMessage}>
+      Oops! something went wrong when fetching the data. This happens sometimes,
+      please try to close the popup and open it again!
+    </div>
+  );
+
   useEffect(() => {
     const fetchData = async () => {
       setShowErrorMessage(false);
@@ -46,10 +53,7 @@ const EmployeeInfo = ({ employeeId, closeMe, placeHolderImage }) => {
         {isLoading ? (
           <div className={styles.loading}>Loading ...</div>
         ) : showErrorMessage ? (
-          <div className={styles.errorMessage}>
-            Oops! something went wrong when fetching the data. This happens
-            sometimes, please try to close the popup and open it again!
-          </div>
+          errorMessage
         ) : (
           <div className={styles.employeeInfo}>
             <div className={styles.employeeName}>{employee.employee_name}</div>

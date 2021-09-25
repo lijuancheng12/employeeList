@@ -22,6 +22,13 @@ const EmployeeList = () => {
     return images[randomNumber];
   };
 
+  const errorMessage = (
+    <div className={styles.errorMessage}>
+      Oops! something went wrong when fetching the data. This happens sometimes,
+      please try to refresh the page
+    </div>
+  );
+
   useEffect(() => {
     const fetchData = async () => {
       setShowErrorMessage(false);
@@ -30,7 +37,7 @@ const EmployeeList = () => {
           "http://dummy.restapiexample.com/api/v1/employees"
         );
         setEmployees(result.data.data);
-        setPlaceHolderImages(result.data.data.map(getRandomImage));
+        setPlaceHolderImages(result.data.data.map(() => getRandomImage()));
       } catch (err) {
         setShowErrorMessage(true);
       }
@@ -39,10 +46,7 @@ const EmployeeList = () => {
   }, []);
 
   return showErrorMessage ? (
-    <div className={styles.errorMessage}>
-      Oops! something went wrong when fetching the data. This happens sometimes,
-      please try to refresh the page
-    </div>
+    errorMessage
   ) : (
     <div className={styles.container}>
       <h1>Employees</h1>
