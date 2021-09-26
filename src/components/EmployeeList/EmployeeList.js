@@ -19,6 +19,7 @@ const EmployeeList = () => {
 
   const getRandomImage = () => {
     const randomNumber = Math.floor(Math.random() * images.length);
+    console.log(randomNumber);
     return images[randomNumber];
   };
 

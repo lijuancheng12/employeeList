@@ -26,11 +26,10 @@ const EmployeeInfo = ({ employeeId, closeMe, placeHolderImage }) => {
           `http://dummy.restapiexample.com/api/v1/employee/${employeeId}`
         );
         setEmployee(result.data.data);
-        setIsLoading(false);
       } catch (err) {
         setShowErrorMessage(true);
-        setIsLoading(false);
       }
+      setIsLoading(false);
     };
     fetchData();
   }, [employeeId]);
