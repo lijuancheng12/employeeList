@@ -40,8 +40,8 @@ const EmployeeInfo = ({ employeeId, closeMe, placeHolderImage }) => {
         <div className={styles.btn}>
           <div className={styles.closeBtn} onClick={closeButton}>
             <span className={styles.left}>
-              <span class={styles.circleLeft}></span>
-              <span class={styles.circleRight}></span>
+              <span className={styles.circleLeft}></span>
+              <span className={styles.circleRight}></span>
             </span>
             <span className={styles.right}>
               <span className={styles.circleLeft}></span>
@@ -59,7 +59,7 @@ const EmployeeInfo = ({ employeeId, closeMe, placeHolderImage }) => {
             <div>
               <img
                 src={employee.profile_image || placeHolderImage}
-                alt="Logo"
+                alt="profileImage"
                 className={styles.profileImage}
               />
             </div>
@@ -70,7 +70,7 @@ const EmployeeInfo = ({ employeeId, closeMe, placeHolderImage }) => {
               </div>
               <div className={styles.text}>
                 Age :
-                <sapn className={styles.textR}>{employee.employee_age}</sapn>
+                <span className={styles.textR}>{employee.employee_age}</span>
               </div>
             </div>
           </div>

@@ -19,7 +19,6 @@ const EmployeeList = () => {
 
   const getRandomImage = () => {
     const randomNumber = Math.floor(Math.random() * images.length);
-    console.log(randomNumber);
     return images[randomNumber];
   };
 
@@ -57,7 +56,7 @@ const EmployeeList = () => {
             <div className={styles.userLists}>
               <img
                 src={employee.profile_image || placeHolderImages[index]}
-                alt="Logo"
+                alt="profileImage"
                 className={styles.imageStyle}
               />
 
@@ -69,7 +68,7 @@ const EmployeeList = () => {
           </li>
         ))}
       </ul>
-      {employeeId > -1 && (
+      {employeeId !== -1 && (
         <EmployeeInfo
           employeeId={employeeId}
           closeMe={() => setEmployeeId(-1)}
