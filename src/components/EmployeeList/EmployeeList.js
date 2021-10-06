@@ -14,7 +14,7 @@ const images = [image1, image2, image3, image4, image5, image6];
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
-  const [employeeId, setEmployeeId] = useState(-1);
+  const [employeeId, setEmployeeId] = useState(null);
   const [placeHolderImages, setPlaceHolderImages] = useState([]);
 
   const getRandomImage = () => {
@@ -61,17 +61,19 @@ const EmployeeList = () => {
               />
 
               {employee.employee_name}
-              <button onClick={() => setEmployeeId(employee.id)}>
-                Mer info
-              </button>
+              {employee.id !== null && (
+                <button onClick={() => setEmployeeId(employee.id)}>
+                  Mer info
+                </button>
+              )}
             </div>
           </li>
         ))}
       </ul>
-      {employeeId !== -1 && (
+      {employeeId !== null && (
         <EmployeeInfo
           employeeId={employeeId}
-          closeMe={() => setEmployeeId(-1)}
+          closeMe={() => setEmployeeId(null)}
           placeHolderImage={
             placeHolderImages[employees.findIndex((e) => e.id === employeeId)]
           }
